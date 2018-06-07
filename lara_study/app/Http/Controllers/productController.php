@@ -17,7 +17,7 @@ class productController extends Controller
         $query = $this->searchProduct
             ->productList($request->all());
         $products = $this->searchProduct
-            ->searchByQuery($query);
+            ->searchByQuery($query, null, null, 30, 0, null)->paginate(30);
 
         return response()->json([
             'products' => $products
