@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller as BaseController;
 use App\Repositories\EsProduct\EsProductRepository;
 use Illuminate\Http\Request;
 
-class productController extends Controller
+class productController extends BaseController
 {
     protected $esProductRepository;
 
@@ -14,7 +14,7 @@ class productController extends Controller
         $this->esProductRepository = $esProductRepository;
     }
     
-    public function productList(Request $request)
+    public function get(Request $request)
     {
         $products = $this->esProductRepository
             ->productList($request->all());
