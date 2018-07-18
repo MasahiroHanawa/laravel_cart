@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use App\Models\SearchProduct;
+use App\Models\EsProduct;
 
 class CreateLaraCartIndex extends Migration
 {
@@ -15,7 +15,7 @@ class CreateLaraCartIndex extends Migration
      */
     public function up()
     {
-        SearchProduct::createIndex($shards = null, $replicas = null);
+        EsProduct::createIndex($shards = null, $replicas = null);
     }
 
     /**
@@ -25,6 +25,6 @@ class CreateLaraCartIndex extends Migration
      */
     public function down()
     {
-        SearchProduct::deleteIndex();
+        EsProduct::deleteIndex();
     }
 }

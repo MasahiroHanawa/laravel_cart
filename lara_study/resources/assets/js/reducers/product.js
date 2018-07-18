@@ -1,14 +1,31 @@
 import * as constants from '../constants';
 
 const initialState = {
+  params: {
+    keyword: '',
+    categoryId: null
+  },
   products: [],
   message: null
 }
 
 export default function search(state = initialState, action) {
   switch (action.type) {
-    case constants.GET_PRODUCT:
+    case constants.SET_PARAM:
+      state.params[action.name] = action.keyword
+      console.log('パラムテスト');
+      console.log(action);
+      console.log(state.param);
       return {
+        params: state.params,
+        products: state.products,
+        message: null
+      }
+    case constants.GET_PRODUCT:
+      console.log(state);
+      console.log(action);
+      return {
+        params: state.params,
         products: action.products,
         message: null
       }
@@ -21,6 +38,10 @@ export default function search(state = initialState, action) {
       }
     default:
       return {
+        params: {
+          keyword: '',
+          categoryId: null
+        },
         products: {
           data: []
         },

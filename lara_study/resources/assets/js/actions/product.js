@@ -1,9 +1,18 @@
 import apiClient from '../utils/api';
 import * as constants from '../constants';
 
-export function search () {
+export function setParam (name, param) {
   return (dispatch) => {
-    apiClient().get('/products')
+    dispatch({
+      type: constants.SET_PARAM,
+      param: name
+    })
+  }
+}
+
+export function search (params) {
+  return (dispatch) => {
+    apiClient().get('/products', { params })
       .then((response) => {
         dispatch({
           type: constants.GET_PRODUCT,
@@ -15,6 +24,7 @@ export function search () {
           type: constants.CONNECTION_FAILED,
           products: response
         })
-      })
+      }
+    )
   }
 }

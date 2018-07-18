@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
-use App\Models\SearchProduct;
+use App\Repositories\EsProduct\EsProductRepository;
 use Illuminate\Http\Request;
 
 class productController extends Controller
 {
-    public function __construct(SearchProduct $searchProduct)
+    protected $esProductRepository;
+
+    public function __construct(EsProductRepository $esProductRepository)
     {
-        $this->searchProduct = $searchProduct;
+        $this->esProductRepository = $esProductRepository;
     }
     
     public function productList(Request $request)
     {
-        $query = $this->searchProduct
+        $products = $this->esProductRepository
             ->productList($request->all());
-        $products = $this->searchProduct
-            ->searchByQuery($query, null, null, 30, 0, null)->paginate(30);
 
         return response()->json([
             'products' => $products

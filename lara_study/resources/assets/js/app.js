@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import Home from './components/Home';
+import Home from './components/Pages/Home';
 import createHistory from 'history/createBrowserHistory'
 import RegisterProduct from './components/RegisterProduct';
 import finalCreateStore from './stores/store';
