@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
-use Illuminate\Routing\Controller as BaseController;
+use App\Http\Controllers\BaseController;
 use App\Repositories\Category\CategoryRepository;
 use Illuminate\Http\Request;
 
-class categoryController extends BaseController
+class CategoryController extends BaseController
 {
     protected $esProductRepository;
 
@@ -20,7 +20,7 @@ class categoryController extends BaseController
         $categories = $this->categoryRepository
             ->categoryList($request->all());
 
-        return response()->json([
+        return $this->responseApiOk([
             'categories' => $categories
         ]);
     }

@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Routing\Controller as BaseController;
+use App\Http\Controllers\BaseController;
 use App\Repositories\EsProduct\EsProductRepository;
 use Illuminate\Http\Request;
 
-class productController extends BaseController
+class ProductController extends BaseController
 {
     protected $esProductRepository;
 
@@ -19,7 +19,7 @@ class productController extends BaseController
         $products = $this->esProductRepository
             ->productList($request->all());
 
-        return response()->json([
+        return $this->responseApiOk([
             'products' => $products
         ]);
     }

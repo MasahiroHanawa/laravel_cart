@@ -27,6 +27,6 @@ return array(
     | Elasticquent models.
     */
 
-    'default_index' => 'lara_cart',
+    'default_index' => env('ES_INDEX', 'lara_cart'),
 
 );
