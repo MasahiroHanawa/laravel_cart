@@ -12,5 +12,4 @@ interface EsProductInterface
      */
     public function productList($request);
 
-
 }

@@ -10,6 +10,12 @@ class EsProduct extends Model
     use ElasticquentTrait;
 
     protected $table = 'products';
+
+    public function getIndexName()
+    {
+        return \Config::get('elasticquent.default_index');
+    }
+
     /**
      * The elasticsearch settings.
      *
